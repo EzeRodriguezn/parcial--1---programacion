@@ -32,23 +32,25 @@ esa nota exacta.
 """
 
 # Función para cargar una matriz de notas de n alumnos y m exámenes
-def cargar_matriz_notas(n,m):
-    matriz = []  # Lista donde se va a guardar la matriz de notas
-    for i in range(n):  # va por cada alumno
-        fila = []  # Lista vacía para guardar las notas del alumno i
-
-        for j in range(m):  # va por cada  examen
-            nota = 0  
-            while nota < 1 or nota > 10:  # me fijo si el numeor ingresado esta entre el 1 y 10
-                nota = int(input("Nota del alumno " + str(i + 1) + ", examen " + str(j + 1) + ": "))
-                if nota < 1 or nota > 10:
-                    print("Nota inválida. Debe estar entre 1 y 10.")
-
-            fila.append(nota)  # Agregamos la nota válida a la fila del alumno
-
-        matriz.append(fila)  # Agregamos la fila completa a la matriz
-
-    return matriz  # Devolvemos la matriz completa con todas las notas
+def cargar_matriz_notas(n, m): # Función para cargar una matriz de n alumnos por m exámenes
+    matriz = []  #  lista vacía para guardar la matriz
+    for i in range(n): # va por cada fila (alumno)
+        fila = []  # Lista vacía donde se almacenan las notas de un alumno
+        for j in range(m):# va por cada columna (examen)
+            nota_valida = False  # Bandera para repetir la carga en el caso de que no sea valida
+            while not nota_valida: 
+                nota = input(f"Ingrese la nota del alumno {i+1}, examen {j+1}: ")
+                if nota.isdigit():  # Verifica que es un número
+                    nota = int(nota)
+                    if 1 <= nota <= 10: # Valida que sea un número entero entre 1 y 10
+                        nota_valida = True
+                        fila.append(nota) # Agrega la nota validada
+                    else:
+                        print("La nota debe estar entre 1 y 10.")
+                else:
+                    print("Debe ingresar un número entero.")
+        matriz.append(fila)  # Agrega la fila completa a la matriz
+    return matriz
 
 
 # Función para calcular el porcentaje de aprobados
