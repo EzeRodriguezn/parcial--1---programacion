@@ -32,7 +32,7 @@ esa nota exacta.
 """
 
 # Función para cargar una matriz de notas de n alumnos y m exámenes
-def cargar_matriz_notas(n, m): # Función para cargar una matriz de n alumnos por m exámenes
+def cargar_matriz_notas(n, m): 
     matriz = []  #  lista vacía para guardar la matriz
     for i in range(n): # va por cada fila (alumno)
         fila = []  # Lista vacía donde se almacenan las notas de un alumno
