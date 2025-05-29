@@ -30,9 +30,7 @@ el valor del promedio.
 retorna una lista con todas las posiciones (fila, columna) donde aparece
 esa nota exacta.
 """
-# from validaciones import *
-n = int(input("Ingrese la cantidad de alumnos: "))
-m = int(input("Ingrese la cantidad de exámenes por alumno: "))
+
 # Función para cargar una matriz de notas de n alumnos y m exámenes
 def cargar_matriz_notas():
     matriz = []  # Lista donde se va a guardar la matriz de notas
@@ -53,19 +51,15 @@ def cargar_matriz_notas():
     return matriz  # Devolvemos la matriz completa con todas las notas
 
 
-# Función para calcular y mostrar el porcentaje de exámenes aprobados por cada alumno
+# Función para calcular el porcentaje de aprobados
 def porcentaje_aprobados(matriz):
-    print("\n=== PORCENTAJE DE APROBADOS POR ALUMNO ===")
-    for i in range(len(matriz)):  # Recorremos cada alumno (fila de la matriz)
-        total = 0       # Contador de exámenes totales
-        aprobados = 0   # Contador de exámenes aprobados (nota >= 6)
-
-        for j in range(len(matriz[i])):  # Recorremos cada nota del alumno
-            total = total + 1  # Sumamos un examen al total
-            if matriz[i][j] >= 6:  # Si es 6 o más, se considera aprobado
-                aprobados = aprobados + 1
-
-        porcentaje = (aprobados * 100) / total  # Calculamos e*
-
-
-print (cargar_matriz_notas())
+    for i in range(len(matriz)):
+        total_examenes = 0 #contador
+        aprobados = 0 #contador
+        for j in range(len(matriz[i])):
+            nota = matriz[i][j] 
+            total_examenes += 1
+            if nota >= 6: #se fija si el examen esta aprobado
+                aprobados += 1 #incrementa el contador de aprobados
+        porcentaje = (aprobados * 100) / total_examenes # Se calcula el porcentaje
+        print(f"Alumno {i+1}: {porcentaje}% de exámenes aprobados.")
